@@ -24,6 +24,10 @@ en:
   username: "Username"
   email: "Email"
   general:
+    admin_setup: "Admin Setup"
+    welcome_user: "Welcome %{username}"
+    content: "Content"
+    message: "Message"
     all: "All"
     app_title: "Project App"
     confirm: "Are you sure ?"

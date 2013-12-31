@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :is_admin?, :is_user?
 	SUPER_ADMIN = "SuperAdmin"
-	USER = "user"
+	USER = "User"
 
   private
 
@@ -23,6 +23,12 @@ class ApplicationController < ActionController::Base
         redirect_to :controller => "user_sessions", :action => "new"
       end
     end
+    
+    def require_admin
+      unless session[:user_role] == SUPER_ADMIN
+        redirect_to :controller => "user_sessions", :action => "new"
+      end
+    end    
 
     def authenticate_email(email)
       user = User.where(:email => email).first

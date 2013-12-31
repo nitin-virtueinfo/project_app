@@ -5,21 +5,33 @@
 </div>
 <%= form_for @o_single, :url => profile_path, :html => { :class => 'form-horizontal' } do |f| %>
     <div class="control-group">
+      <%= f.label :first_name, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :first_name, :class => 'input-xlarge', :placeholder => 'First Name' %>
+        <%= f.text_field :first_name, :class => 'input-xlarge' %>
       </div>
-    </div>
-
+    </div>		
+		
     <div class="control-group">
+      <%= f.label :last_name, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :last_name, :class => 'input-xlarge', :placeholder => 'Last Name' %>
+        <%= f.text_field :last_name, :class => 'input-xlarge' %>
       </div>
     </div>
-
-    <div class="form-actions">
+    
+    <div class="control-group">
+      <%= f.label :email, :class => 'control-label' %><span class="redStart">*</span>
+      <div class="controls">
+        <%= f.text_field :email, :class => 'input-xlarge' %>
+       	<% if @o_single.errors[:email].any? %>
+        	<span class="text-error text-message"><%= @o_single.errors[:email].first %></span>
+      	<% end %>        
+      </div>
+    </div>
+    
+	    <div class="form-actions">
         <div class="row-fluid mb10">
             <div class="span12">
-                <%= f.submit t("general.save"), :class => 'btn btn-success' %>
+                <%= f.submit t("general.save"), :class => 'btn btn-primary' %>
             </div><!--/span-->
         </div><!--/row-->
     </div>

@@ -26,3 +26,51 @@ puts 'Load user roles'
 puts '==================================================================='
 # Create a role type for users
 @admin.role = @admin_role
+
+
+
+puts 'load footer pages'
+
+help = FooterPage.create(:name => 'Help',
+                        :page_route => 'help',
+                        :meta_keywords => 'help',
+                        :meta_description => 'help',
+                        :content => "Help",
+                        :is_header => true
+                        )
+
+privacy = FooterPage.create(:name => 'Privacy policy',
+                        :page_route => 'privacy',
+                        :content => "privacy policy",
+                        :is_header => false
+                        )
+
+aboutus = FooterPage.create(:name => 'About us',
+                        :page_route => 'about-us',
+                        :content => "About us",
+                        :is_header => false
+                        )
+
+disclaimer = FooterPage.create(:name => 'Legal Disclaimer',
+                        :page_route => 'legal-disclaimer',
+                        :content => "Legal disclaimer",
+                        :is_header => false
+                        )
+
+puts 'create default languages'
+
+english = Language.create(:name => "English",
+                          :code => "en",
+                          :is_default => true
+                          )
+                          
+puts 'create default email templates'
+
+                          
+email_template = EmailTemplate.create(:subject => "Registration",
+                          :content => "Registration",
+                          :email_type => "registration_email")                         
+                          
+email_template = EmailTemplate.create(:subject => "Forgot Password",
+                          :content => "Forgot Password",
+                          :email_type => "forgot_password")   

@@ -2,7 +2,6 @@ class FrontsController < ApplicationController
   before_filter :require_user, :only => [:change_password, :profile]
 
   def dashboard
-    @chat_messages = Message.find
     unless current_user
       redirect_to signup_url
     end

@@ -3,6 +3,12 @@ ProjectApp::Application.routes.draw do
   #get '/chat', to: RealtimeChatController  
   resources :users
   resources :user_sessions
+  
+  resources :footer_pages
+  resources :contacts
+  resources :languages
+  resources :email_templates
+  resources :settings  
 
   get 'logout' => 'user_sessions#destroy', :as => :logout
   get 'login' => 'user_sessions#new', :as => :login
@@ -10,7 +16,6 @@ ProjectApp::Application.routes.draw do
 
   match '/forgot_password' => 'fronts#forgot_password', :as => :forgot_password, via: [:get, :post]
   match '/change_password' => 'fronts#change_password', :as => :change_password, via: [:get, :post, :patch]
-  get '/settings' => 'fronts#settings', :as => :settings
   get 'dashboard' => 'fronts#dashboard', :as => :dashboard
   match 'activate/:activation_key' => 'fronts#user_activation', :as => :activation_link, via: [:get]
   match '/profile' => 'fronts#profile', :as => :profile, via: [:get, :post, :patch]

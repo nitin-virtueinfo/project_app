@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224115120) do
+ActiveRecord::Schema.define(version: 20131231064756) do
+
+  create_table "contacts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.boolean  "is_feedback", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "email_templates", force: true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.string   "email_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "footer_pages", force: true do |t|
+    t.string   "name"
+    t.string   "page_route"
+    t.text     "content"
+    t.boolean  "is_footer",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.text     "content"
+    t.boolean  "is_active",  default: true
+    t.boolean  "is_default", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.string   "message"
@@ -22,6 +59,15 @@ ActiveRecord::Schema.define(version: 20131224115120) do
 
   create_table "roles", force: true do |t|
     t.string   "role_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "settings", force: true do |t|
+    t.string   "default_name"
+    t.string   "default_label"
+    t.string   "default_value"
+    t.boolean  "is_active",     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

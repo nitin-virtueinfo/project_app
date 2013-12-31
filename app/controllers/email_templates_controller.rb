@@ -1,13 +1,13 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+class EmailTemplatesController < ApplicationController
+  before_action :set_email_template, only: [:show, :edit, :update, :destroy]
   before_action :destroy_all_selected, only: [:index]
   helper_method :sort_column, :sort_direction
   before_action :require_admin
 
-  # GET /users
-  # GET /users.json
+  # GET /email_templates
+  # GET /email_templates.json
   def index
-    session[:search_params] = params[:user] ? params[:user] : nil
+    session[:search_params] = params[:email_template] ? params[:email_template] : nil
     
     session[:set_pager_number] = params[:set_pager_number] if params[:set_pager_number]
     
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:set_pager_number] = PER_PAGE
     end  
     
-    @o_all = User.all_users.
+    @o_all = EmailTemplate.
                   search(session[:search_params]).
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
@@ -25,29 +25,28 @@ class UsersController < ApplicationController
     @o_single = controller_name.classify.constantize.new
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /email_templates/1
+  # GET /email_templates/1.json
   def show
   end
 
-  # GET /users/new
+  # GET /email_templates/new
   def new
-    @o_single = User.new
+    @o_single = EmailTemplate.new
   end
 
-  # GET /users/1/edit
+  # GET /email_templates/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /user_sessions
-  # POST /user_sessions.xml
+  # POST /email_templates
+  # POST /email_template_sessions
+  # POST /email_template_sessions.xml
   def create
-    @o_single = User.new(user_params)
+    @o_single = EmailTemplate.new(email_template_params)
     respond_to do |format|
       if @o_single.save
-        @o_single.role = Role.find(params[:role_id])
-        format.html { redirect_to users_url, notice: t("general.successfully_created") }
+        format.html { redirect_to email_templates_url, notice: t("general.successfully_created") }
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -56,12 +55,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+  # PATCH/PUT /email_templates/1
+  # PATCH/PUT /email_templates/1.json
   def update
     respond_to do |format|
-      if @o_single.update(user_params)
-        format.html { redirect_to users_url, notice: t("general.successfully_updated") }
+      if @o_single.update(email_template_params)
+        format.html { redirect_to email_templates_url, notice: t("general.successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,40 +69,40 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  # DELETE /email_templates/1
+  # DELETE /email_templates/1.json
   def destroy
     @o_single.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: t("general.successfully_destroyed") }
+      format.html { redirect_to email_templates_url, notice: t("general.successfully_destroyed") }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @o_single = User.find(params[:id])
+    def set_email_template
+      @o_single = EmailTemplate.find(params[:id])
     end
 
     def destroy_all_selected
       if params[:rec]
         id_arrs = params[:rec].collect { |k, v| k }
-        User.find(id_arrs).map(&:destroy)
+        EmailTemplate.find(id_arrs).map(&:destroy)
       end    
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit!
+    def email_template_params
+      params.require(:email_template).permit!
     end
 
     def set_header_menu_active
-      @users = "active"
+      @email_templates = "active"
     end
     
     def sort_column
-      User.column_names.include?(params[:sort]) ? params[:sort] : "id"
+      EmailTemplate.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
   
     def sort_direction
