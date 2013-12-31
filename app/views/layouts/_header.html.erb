@@ -1,0 +1,23 @@
+<div class="navbar navbar-fluid-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="brand" href="/">ProjectApp</a>
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+        	<% unless current_user %>
+          	<li><%= link_to t("general.sign_up"), "/signup"  %></li>
+          	<li><%= link_to t("general.login"), "/login"  %></li>
+          <% else %>
+          	<% if is_admin? %>
+          		<li><%= link_to t("general.users"), users_path  %></li>
+          	<% else %>	
+          	<% end %>
+          	<li><%= link_to t("general.profile"), "/profile"  %></li>
+          	<li><%= link_to t("general.change_password"), "/change_password"  %></li>
+          	<li><%= link_to t("general.logout"), "/logout"  %></li>
+          <% end %>	
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
