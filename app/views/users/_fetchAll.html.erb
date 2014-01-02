@@ -3,11 +3,11 @@
  <thead> 
   <tr>
   	<th width="5%"><%= check_box_tag "check_all", "" %><%= t("general.all") %></th>
-    <th width="20%"><%= sortable "first_name", t("username") %></th>
-    <th width="25%"><%= sortable "email", t("email") %></th>
+    <th width="20%"><%=raw sortable "first_name", t("username") %></th>
+    <th width="20%"><%= sortable "email", t("email") %></th>
     <th width="15%"><%= t("role") %></th>
     <th width="15%"><%= sortable "created_at", t("general.date")%></th>
-    <th width="5%"><%= sortable "is_active", t("general.active") %></th>
+    <th width="10%"><%= sortable "is_active", t("general.active") %></th>
     <th width="15%"><%= t("general.actions") %></th>
   </tr>
  </thead> 

@@ -3,6 +3,12 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    
+    if direction == "asc"
+      title = image_tag("down_arrow.gif") + " " + title.to_s
+    else  
+      title = image_tag("up_arrow.gif") + " " + title.to_s
+    end  
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), :class => direction, :remote => true
   end  
   

@@ -13,6 +13,7 @@
         
         <ul class="nav pull-right">
         	<% unless current_user %>
+        		<li><%= link_to t("general.contact_us"), "/contact_us"  %></li>
           	<li><%= link_to t("general.sign_up"), "/signup"  %></li>
           	<li><%= link_to t("general.login"), "/login"  %></li>
           <% else %>        	

@@ -33,8 +33,6 @@ puts 'load footer pages'
 
 help = FooterPage.create(:name => 'Help',
                         :page_route => 'help',
-                        #:meta_keywords => 'help',
-                        #:meta_description => 'help',
                         :content => "Help",
                         :is_footer => true
                         )
@@ -42,19 +40,19 @@ help = FooterPage.create(:name => 'Help',
 privacy = FooterPage.create(:name => 'Privacy policy',
                         :page_route => 'privacy',
                         :content => "privacy policy",
-                        :is_footer => false
+                        :is_footer => true
                         )
 
 aboutus = FooterPage.create(:name => 'About us',
                         :page_route => 'about-us',
                         :content => "About us",
-                        :is_footer => false
+                        :is_footer => true
                         )
 
 disclaimer = FooterPage.create(:name => 'Legal Disclaimer',
                         :page_route => 'legal-disclaimer',
                         :content => "Legal disclaimer",
-                        :is_footer => false
+                        :is_footer => true
                         )
 
 puts 'create default languages'

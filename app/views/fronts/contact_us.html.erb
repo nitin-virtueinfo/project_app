@@ -31,7 +31,7 @@
     	<div class="controls">
     	<%= t("general.type_your_msg_here") %>
     	<div class="clearBoth"></div>    	
-    	<%= f.text_area :message, :class => 'textArea' %>
+    	<%= f.text_area :message, :class => 'textArea wysihtml5' %>
     	</div>
     </div>
 
@@ -43,3 +43,16 @@
 
 <% end %>
 </div>
+
+<script type="text/javascript">
+	$(document).on('page:load', function(){
+	  window['rangy'].initialized = false
+	})
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
