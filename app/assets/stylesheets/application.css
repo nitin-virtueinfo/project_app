@@ -11,6 +11,8 @@
  *= require_self
  *= require bootstrap
  *= require bootstrap-responsive
+ *= require bootstrap-wysihtml5
+ *= require bootstrap-datetimepicker
  *= require bootstrap-social
  *= require font-awesome 
  *= require_tree .
