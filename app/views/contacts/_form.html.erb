@@ -23,7 +23,7 @@
     <div class="control-group <%= @o_single.errors[:message].any? ? 'error' : '' %>">
       <%= f.label :message, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :message, :class => 'input-xlarge', :placeholder => t("general.message"), :class => "textArea" %>
+        <%= f.text_area :message, :placeholder => t("general.message"), :class => "textArea wysihtml5" %>
        	<% if @o_single.errors[:message].any? %>
         	<span class="text-error"><%= @o_single.errors[:message].first %></span>
       	<% end %>
@@ -38,3 +38,15 @@
     
 <% end %>
 
+<script type="text/javascript">
+	$(document).on('page:load', function(){
+	  window['rangy'].initialized = false
+	})
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>

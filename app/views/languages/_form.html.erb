@@ -32,7 +32,7 @@
     	<div class="control-group">
     		<%= f.label :content, :class => 'control-label' %>
     		<div class="controls">
-    			<%= f.text_area :content, :value => source_locale_file, :class => 'textArea' %>
+    			<%= f.text_area :content, :value => source_locale_file, :class => 'textArea wysihtml5' %>
     		</div>
     	</div>
     <% end %>
@@ -52,3 +52,16 @@
     
 <% end %>
 
+
+<script type="text/javascript">
+	$(document).on('page:load', function(){
+	  window['rangy'].initialized = false
+	})
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
