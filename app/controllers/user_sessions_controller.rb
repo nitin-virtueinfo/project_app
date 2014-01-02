@@ -71,7 +71,7 @@ class UserSessionsController < ApplicationController
           @o_single.role = Role.find_by(:role_type => USER)
 
           opts = {
-            :username => @o_single.fullname, 
+            :username => @o_single.first_name, 
             :email => @o_single.email, 
             :password => params[:user][:password], 
             :registration_key => @o_single.registration_key
