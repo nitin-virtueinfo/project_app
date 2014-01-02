@@ -4,7 +4,7 @@
 	</h4>
 </div>
 <%= form_for @o_single, :url => signup_path, :html => { :class => 'form-horizontal' } do |f| %>
-	   <div class="control-group">
+	<div class="control-group">
       <div class="controls">
         <%= f.text_field :first_name, :class => 'input-xlarge', :placeholder => 'First name' %>
        	<% if @o_single.errors[:email].any? %>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-	   <div class="control-group">
+	<div class="control-group">
       <div class="controls">
         <%= f.text_field :last_name, :class => 'input-xlarge', :placeholder => 'Last name' %>
        	<% if @o_single.errors[:last_name].any? %>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-	   <div class="control-group">
+	<div class="control-group">
       <div class="controls">
         <%= f.text_field :email, :class => 'input-xlarge', :placeholder => 'Email' %>
        	<% if @o_single.errors[:email].any? %>
@@ -39,18 +39,34 @@
       	<% end %>
       </div>
     </div>
+
+    <div class="control-group">
+      <div id="user_birth_date" class="controls">
+		<%= f.text_field :birth_date, :class => 'input-xlarge', :placeholder => 'Birth Date' %>
+        <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+        </span> 				
+	</div>	   
+    </div>
+		 
+    <div class="control-group">
+        <div class="controls">
+            <%= f.file_field :image, :class => 'input-xlarge' %>
+        </div>
+    </div>
+    <% if @o_single.image? %>
+        <div class="control-group"><div class="controls"><%= image_tag @o_single.image_url(:logo) %></div></div>
+    <% end %>
     
     <div class="control-group">
-      
       <div class="controls">
       	<div style="float:left;">
       		<%= f.check_box :term, :class => 'check_box' %>
-      			<%= t("general.terms_and_conditions").html_safe %>
-      			<span class="text-error text-message"><%= t("general.term_error") if @o_single.errors[:term].first %></span>
+  			<%= t("general.terms_and_conditions").html_safe %>
+  			<span class="text-error text-message"><%= t("general.term_error") if @o_single.errors[:term].first %></span>
       	</div>
       </div>
     </div>	    
-
     
       <div class="form-actions">
           <div class="row-fluid">
@@ -61,3 +77,12 @@
       </div>
     
 <% end %>
+
+<script type="text/javascript">
+
+$('#user_birth_date').datetimepicker({
+    language: 'en',
+    format: "dd/MM/yyyy"
+  });
+
+</script>  

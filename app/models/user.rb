@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates :email, :term, :presence => true
 
+  mount_uploader :image, ImageUploader
+
   def is_admin?
     has_role?(SUPER_ADMIN)
   end

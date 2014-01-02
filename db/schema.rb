@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231064756) do
+ActiveRecord::Schema.define(version: 20140102083559) do
 
   create_table "contacts", force: true do |t|
     t.integer  "user_id"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20131231064756) do
     t.string   "time_zone"
     t.integer  "language_id"
     t.string   "interval_time"
+    t.string   "image"
+    t.date     "birth_date"
     t.integer  "login_count",          default: 0,     null: false
     t.integer  "failed_login_count",   default: 0,     null: false
     t.datetime "last_request_at"
