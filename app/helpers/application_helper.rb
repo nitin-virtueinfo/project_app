@@ -15,7 +15,7 @@ module ApplicationHelper
   end
   
   def get_all_pages
-    StaticPage.footer 
+    FooterPage.footer 
   end
   
   def get_marital_status

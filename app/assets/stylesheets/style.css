@@ -227,3 +227,21 @@
     margin: 2px 10px 15px;
     padding: 20px; 	
  }
+.footer.landingFB{ background:rgba(0,0,0,0.35); padding:10px 0px 0px 0px;}
+.footer{ background:#06A0B7; padding:15px 0px 15px 0px; margin-top: 50px;}
+.fTitle{ color:#fff; font-size:32px; font-weight:300; text-align:center; margin-bottom:20px;}
+.fTitle span{ color:#49e0b8; font-weight:600;}
+.footer p{ color:#fff; font-size:13px; text-align:center;}
+.fMenu h3{ color:#fff; font-size:25px; font-weight:900; text-transform:uppercase;}
+.fMenu ul{ list-style:none; padding:0px; margin:0px;}
+.fMenu ul li{ color:#b0bcba; font-size:14px; display:inline-block; width:100%; margin:2px 0px;}
+.fMenu ul li.linkC a{ color:#31be9c; font-weight:700;}
+.fMenu ul li a{ color:#b0bcba; font-size:14px; font-weight:600; text-decoration:none;}
+.fMenu ul li a:hover{ color:#31be9c;}
+.fMenu ul li.fIcon{ width:auto; margin-right:2px;}
+.fMenu ul li img{ vertical-align:middle;}
+.fMenu .fContact ul li img{ vertical-align:bottom;}
+.fMenu .fContact ul li a{ color:#31be9c; font-size:18px; font-weight:900; vertical-align:top;}
+.fMenu ul li.linkC a:hover,
+.fMenu .fContact ul li a:hover{ color:#b0bcba;}
+.copyRightText{ color:#fff; font-size:14px; margin:8px 8px; text-align: center;}

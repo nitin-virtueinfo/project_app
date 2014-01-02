@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
                   
-    @params_arr = ['first_name', 'email']
+    @params_arr = ['name', 'email']
     
     @o_single = controller_name.classify.constantize.new
   end
@@ -89,6 +89,7 @@ class ContactsController < ApplicationController
       if params[:rec]
         id_arrs = params[:rec].collect { |k, v| k }
         Contact.find(id_arrs).map(&:destroy)
+        flash[:notice] = t("general.successfully_destroyed")
       end    
     end
 

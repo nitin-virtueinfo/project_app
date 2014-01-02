@@ -24,6 +24,11 @@ en:
   username: "Username"
   email: "Email"
   general:
+    send: "Send"
+    contact_us: "Contact us"
+    your_name: "Your Name:"
+    your_email: "Your Email:"
+    type_your_msg_here: "Type your message here"
     admin_setup: "Admin Setup"
     welcome_user: "Welcome %{username}"
     content: "Content"
@@ -65,6 +70,7 @@ en:
     you_are_not_active_user: "You are not active user."
     successfully_updated: Successfully updated.
     successfully_destroyed: Successfully destroyed.
+    successfully_sent_inquiry: "Inquiry sent uccessfully"
     successfully_registered: "Successfully registered. Confirmation email has been sent to your provided email account. Please click on link to confirm."
     user_active_successfully: "Activated successfully."
     already_activated: "Already activated"

@@ -16,7 +16,7 @@ $(document).ready(function() {
 	  if (checked) {
 	  	var msg = "Are you sure want to remove selected record(s)?";
 	    if(confirm(msg)){
-	      $("#new_user").submit();
+	      $("#index_form").submit();
 	    } else {
 	    	return false;
 	    }			    			    	
