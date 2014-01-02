@@ -23,7 +23,7 @@
     <div class="control-group <%= @o_single.errors[:content].any? ? 'error' : '' %>">
       <%= f.label :content, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :content, :class => 'input-xlarge', :placeholder => t("general.content"), :class => "textArea" %>
+        <%= f.text_area :content, :value => @file_content, :class => 'input-xlarge', :placeholder => t("general.content"), :class => "textArea" %>
        	<% if @o_single.errors[:content].any? %>
         	<span class="text-error"><%= @o_single.errors[:content].first %></span>
       	<% end %>

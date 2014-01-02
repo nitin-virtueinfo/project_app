@@ -20,7 +20,7 @@ class EmailTemplatesController < ApplicationController
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
                   
-    @params_arr = ['subject']
+    @params_arr = ['email_type', 'subject']
     
     @o_single = controller_name.classify.constantize.new
   end
@@ -37,6 +37,7 @@ class EmailTemplatesController < ApplicationController
 
   # GET /email_templates/1/edit
   def edit
+    @file_content = get_email_template_file(@o_single)
   end
 
   # POST /email_templates
@@ -60,6 +61,7 @@ class EmailTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @o_single.update(email_template_params)
+        update_email_template_file(@o_single)
         format.html { redirect_to email_templates_url, notice: t("general.successfully_updated") }
         format.json { head :no_content }
       else
@@ -91,7 +93,30 @@ class EmailTemplatesController < ApplicationController
         EmailTemplate.find(id_arrs).map(&:destroy)
       end    
     end
-
+    
+    def update_email_template_file(email_template)
+      case email_template.email_type
+      when "registration_email"
+        new_email_template_file = Rails.root.join("app", "views", "user_mailer", "registration_confirmation.html.erb")
+      when "forgot_password"
+        new_email_template_file = Rails.root.join("app", "views", "user_mailer", "forgot_password_confirmation.html.erb")
+      end     
+      
+      target = File.open(new_email_template_file, 'w') {|f| f.write(email_template.content) }
+    end     
+    
+    def get_email_template_file(email_template)
+      case email_template.email_type
+      when "registration_email"
+        new_email_template_file = Rails.root.join("app", "views", "user_mailer", "registration_confirmation.html.erb")
+      when "forgot_password"
+        new_email_template_file = Rails.root.join("app", "views", "user_mailer", "forgot_password_confirmation.html.erb")
+      end     
+      
+      target = File.read(new_email_template_file)
+      return target
+    end    
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_template_params
       params.require(:email_template).permit!
