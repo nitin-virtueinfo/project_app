@@ -8,7 +8,7 @@
 	<div class="searchRight fr">
 		<%= link_to t("general.search"), show_search_box_path("true", model_class, @params_arr.join(',')), :remote => true, :class => 'btn btn-primary btn-small' %>&nbsp;
 		
-		<%= link_to t('general.add'),
+		<%#= link_to t('general.add'),
 		            new_contact_path,
 		            :class => 'btn btn-primary btn-small' %>
 		            
