@@ -2,11 +2,11 @@
 <table class="table table-striped">
  <thead> 
   <tr>
-  	<th width="5%"><%= check_box_tag "check_all", "" %><%= t("general.all") %></th>
+  	<th width="10%"><%= check_box_tag "check_all", "" %><%= t("general.all") %></th>
   	<th width="20%"><%= sortable "email_type", t("email_type") %></th>
     <th width="20%"><%= sortable "subject", t("subject") %></th>
-    <th width="15%"><%= sortable "created_at", t("general.date")%></th>
-    <th width="15%"><%= t("general.actions") %></th>
+    <th width="25%"><%= sortable "created_at", t("general.date")%></th>
+    <!--th width="15%"><%#= t("general.actions") %></th-->
   </tr>
  </thead> 
   
@@ -14,19 +14,19 @@
     <% if @o_all.size > 0 %>
       <% @o_all.each do |o_row| %>
         <tr>
-        	<th><%= check_box_tag "rec["+o_row.id.to_s+"]", "" %></th>
+          <th><%= check_box_tag "rec["+o_row.id.to_s+"]", "" %></th>
           <td><%= o_row.email_type %></td>
           <td><%= o_row.subject %></td>
           <td><%= o_row.created_at.to_s(:pretty_view) if o_row.created_at %></td>
-          <td> 
-			      <%= link_to t('general.edit'),
+          <!--td> 
+			      <%#= link_to t('general.edit'),
 			                  edit_email_template_path(o_row), :class => 'btn btn-mini' %>
-			      <%= link_to t('general.destroy'),
+			      <%#= link_to t('general.destroy'),
 			                  email_template_path(o_row),
 			                  :method => :delete,
 			                  :data => { :confirm => t('general.confirm') },
 			                  :class => 'btn btn-mini btn-danger' %>
-          </td>
+          </td-->
         </tr>
       <% end %>
     <% else %>

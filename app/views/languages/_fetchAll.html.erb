@@ -21,11 +21,13 @@
           <td> 
 			      <%= link_to t('general.edit'),
 			                  edit_language_path(o_row), :class => 'btn btn-mini' %>
-			      <%= link_to t('general.destroy'),
-			                  language_path(o_row),
-			                  :method => :delete,
-			                  :data => { :confirm => t('general.confirm') },
-			                  :class => 'btn btn-mini btn-danger' %>
+			      <% if o_row.is_default == false %>
+			          <%= link_to t('general.destroy'),
+			                      language_path(o_row),
+			                      :method => :delete,
+			                      :data => { :confirm => t('general.confirm') },
+			                      :class => 'btn btn-mini btn-danger' %>
+			      <% end %>
           </td>
         </tr>
       <% end %>

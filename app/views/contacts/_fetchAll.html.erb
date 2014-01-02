@@ -19,8 +19,10 @@
           <td><%= o_row.email %></td>
           <td><%= o_row.created_at.to_s(:pretty_view) if o_row.created_at %></td>
           <td> 
-			      <%= link_to t('general.edit'),
+			      <%#= link_to t('general.edit'),
 			                  edit_contact_path(o_row), :class => 'btn btn-mini' %>
+			      <%= link_to t('general.show'),
+			                  contact_path(o_row), :class => 'btn btn-mini' %>            
 			      <%= link_to t('general.destroy'),
 			                  contact_path(o_row),
 			                  :method => :delete,
