@@ -1,6 +1,7 @@
+$("#div_update_search").show();
 $("#spinner").hide();
 <% if params[:toggle] == "true" %>
 	$("#div_update_search").html("<%= escape_javascript(render("search")) %>");
-<% else %>	
+<% else %>
 	$("#div_update_search").html(" ");
 <% end %>

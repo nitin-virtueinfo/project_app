@@ -14,7 +14,7 @@
     <div class="controls">
       <%= f.submit t("general.search"), :class => 'btn btn-primary', :id => 'search_button_id' %>
       <span data-no-turbolink>
-      <%= link_to 'Cancel', url_for(:action => 'index', :controller => @o_single.class.to_s.tableize), :class => 'btn' %></span>
+      <%= link_to 'Cancel', 'javascript:void(0)', :onclick => '$(this).closest("form").closest("div").hide()', :class => 'btn' %></span>
     </div>
 
   </fieldset>

@@ -2,15 +2,15 @@ $(document).ready(function() {
 	$('.lnkbtn').click (function() {
 	  $("#spinner").show();
 	});
-	
+
 	$('.selectFieldAjax').change (function() {
 	  $("#spinner").show();
 	});
-	
+
 	$('#check_all').click (function() {
 	  $(this).closest('table').find('input[type=checkbox]').prop('checked', this.checked);
 	});
-	
+
 	$('#destroy_all').click (function() {
 		var checked = $(".table input:checked").length > 0;
 	  if (checked) {
@@ -19,10 +19,13 @@ $(document).ready(function() {
 	      $("#index_form").submit();
 	    } else {
 	    	return false;
-	    }			    			    	
+	    }
 	  }else {
 	  	alert('Please select atleast one record');
 	  	return false;
-	  }			    
+	  }
 	});
+});
+$(function() {
+  $('.pagination a').attr('data-remote', 'true')
 });

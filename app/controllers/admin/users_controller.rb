@@ -8,20 +8,20 @@ class Admin::UsersController < ApplicationController
   # GET /users.json
   def index
     session[:search_params] = params[:user] ? params[:user] : nil
-    
+
     session[:set_pager_number] = params[:set_pager_number] if params[:set_pager_number]
-    
+
     if session[:set_pager_number].nil?
       session[:set_pager_number] = PER_PAGE
-    end  
-    
+    end
+
     @o_all = User.all_users.
                   search(session[:search_params]).
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
-                  
+
     @params_arr = ['first_name', 'email']
-    
+
     @o_single = controller_name.classify.constantize.new
   end
 
@@ -90,7 +90,7 @@ class Admin::UsersController < ApplicationController
       if params[:rec]
         id_arrs = params[:rec].collect { |k, v| k }
         User.find(id_arrs).map(&:destroy)
-      end    
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -101,13 +101,13 @@ class Admin::UsersController < ApplicationController
     def set_header_menu_active
       @users = "active"
     end
-    
+
     def sort_column
       User.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
-  
+
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
-        
+
 end
