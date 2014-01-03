@@ -1,15 +1,21 @@
 ProjectApp::Application.routes.draw do
   #faye_server '/faye', timeout: 25
   #get '/chat', to: RealtimeChatController  
-  resources :users
-  resources :user_sessions
   
-  resources :footer_pages
-  resources :contacts
-  resources :languages
-  resources :email_templates
-  resources :settings  
-
+  namespace :admin do |admin|
+    resources :users, :settings
+    resources :footer_pages, :contacts
+    resources :languages, :email_templates
+  end
+  
+  resources :user_sessions
+  resources :users, path: '/admin/users'
+  resources :settings, path: '/admin/settings'
+  resources :footer_pages, path: '/admin/footer_pages'
+  resources :contacts, path: '/admin/contacts'
+  resources :languages, path: '/admin/languages'
+  resources :email_templates, path: '/admin/email_templates'
+  
   get 'logout' => 'user_sessions#destroy', :as => :logout
   get 'login' => 'user_sessions#new', :as => :login
   match 'signup(/:registration_key)' => 'user_sessions#signup', :as => :signup, via: [:get, :post, :patch]

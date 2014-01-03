@@ -8,7 +8,7 @@
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     &lt;%= t('hello') %&gt;
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -40,7 +40,7 @@ en:
     add: "Add"
     search: "Search"
     title: "ProjectApp"
-    footer_msg: "Copyright &copy; 2013. All rights reserved."
+    footer_msg: "Copyright © 2013. All rights reserved."
     login: Login
     logout: Logout
     reset_password: Reset Password
@@ -57,7 +57,7 @@ en:
     click_here_to_recover_your_account: Forgot Password ?
     password_has_been_sent_to_your_email_address: Password has been reset and new password was sent to your e-mail.
     password_successfully_updated: Password successfully updated
-    terms_and_conditions: "I accept <a href='#'>Terms Of Service</a>"
+    terms_and_conditions: 'I accept <a rel="" target="">Terms Of Service</a>'
     term_error: Please accept Temrs of Service to continue
     login_successful: Successful Logged In
     logout_successful: Successfully Logout
