@@ -61,6 +61,7 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @o_single.update(user_params)
+        @o_single.role = Role.find(params[:role_id])
         format.html { redirect_to admin_users_url, notice: t("general.successfully_updated") }
         format.json { head :no_content }
       else

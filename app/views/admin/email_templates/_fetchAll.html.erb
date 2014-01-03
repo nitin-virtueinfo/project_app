@@ -37,6 +37,7 @@
 <div class="fr">
 	<table>
 		<tr>
+			<td><%= render 'layouts/common_pager' %></td>
 			<td>
 				<%= select_tag "set_pager_number", options_for_select(get_pager_numbers, session[:set_pager_number]), 
 																	:data => { :remote => true, :url => url_for(:action => "index") }, 
