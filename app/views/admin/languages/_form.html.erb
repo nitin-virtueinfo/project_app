@@ -1,5 +1,5 @@
-<%= form_for @o_single, :html => { :class => 'form-horizontal' } do |f| %>
-	
+<%= form_for ["admin", @o_single], :html => { :class => 'form-horizontal' } do |f| %>
+
 	    <div class="control-group <%= @o_single.errors[:name].any? ? 'error' : '' %>">
 	      <%= f.label :name, :class => 'control-label' %>
 	      <div class="controls">
@@ -43,13 +43,13 @@
         <%= f.check_box :is_active, :class => 'check_box' %>
       </div>
     </div>
-    
-   
+
+
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', admin_languages_url, :class => 'btn' %>
     </div>
-    
+
 <% end %>
 
 

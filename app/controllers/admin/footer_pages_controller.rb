@@ -8,20 +8,20 @@ class Admin::FooterPagesController < ApplicationController
   # GET /footer_pages.json
   def index
     session[:search_params] = params[:footer_page] ? params[:footer_page] : nil
-    
+
     session[:set_pager_number] = params[:set_pager_number] if params[:set_pager_number]
-    
+
     if session[:set_pager_number].nil?
       session[:set_pager_number] = PER_PAGE
-    end  
-    
+    end
+
     @o_all = FooterPage.
                   search(session[:search_params]).
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
-                  
+
     @params_arr = ['name']
-    
+
     @o_single = controller_name.classify.constantize.new
   end
 
@@ -46,7 +46,7 @@ class Admin::FooterPagesController < ApplicationController
     @o_single = FooterPage.new(footer_page_params)
     respond_to do |format|
       if @o_single.save
-        format.html { redirect_to footer_pages_url, notice: t("general.successfully_created") }
+        format.html { redirect_to admin_footer_pages_url, notice: t("general.successfully_created") }
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -60,7 +60,7 @@ class Admin::FooterPagesController < ApplicationController
   def update
     respond_to do |format|
       if @o_single.update(footer_page_params)
-        format.html { redirect_to footer_pages_url, notice: t("general.successfully_updated") }
+        format.html { redirect_to admin_footer_pages_url, notice: t("general.successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,7 +74,7 @@ class Admin::FooterPagesController < ApplicationController
   def destroy
     @o_single.destroy
     respond_to do |format|
-      format.html { redirect_to footer_pages_url, notice: t("general.successfully_destroyed") }
+      format.html { redirect_to admin_footer_pages_url, notice: t("general.successfully_destroyed") }
       format.json { head :no_content }
     end
   end
@@ -89,7 +89,7 @@ class Admin::FooterPagesController < ApplicationController
       if params[:rec]
         id_arrs = params[:rec].collect { |k, v| k }
         FooterPage.find(id_arrs).map(&:destroy)
-      end    
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -100,13 +100,13 @@ class Admin::FooterPagesController < ApplicationController
     def set_header_menu_active
       @footer_pages = "active"
     end
-    
+
     def sort_column
       FooterPage.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
-  
+
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
-        
+
 end

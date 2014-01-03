@@ -1,25 +1,25 @@
-<%= form_for @o_single, :html => { :class => 'form-horizontal' } do |f| %>
-	
+<%= form_for ["admin", @o_single], :html => { :class => 'form-horizontal' } do |f| %>
+
     <div class="control-group">
       <%= f.label :email_type, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :email_type, :class => 'input-xlarge' %>
        	<% if @o_single.errors[:email_type].any? %>
         	<span class="text-error"><%= @o_single.errors[:email_type].first %></span>
-      	<% end %>        
+      	<% end %>
       </div>
-    </div>		
-		
+    </div>
+
     <div class="control-group">
       <%= f.label :subject, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :subject, :class => 'input-xlarge' %>
        	<% if @o_single.errors[:subject].any? %>
         	<span class="text-error"><%= @o_single.errors[:subject].first %></span>
-      	<% end %>        
+      	<% end %>
       </div>
     </div>
-    
+
     <div class="control-group <%= @o_single.errors[:content].any? ? 'error' : '' %>">
       <%= f.label :content, :class => 'control-label' %>
       <div class="controls">
@@ -29,13 +29,13 @@
       	<% end %>
       </div>
     </div>
-    
-   
+
+
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', admin_email_templates_url, :class => 'btn' %>
     </div>
-    
+
 <% end %>
 
 <script type="text/javascript">

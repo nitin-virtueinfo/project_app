@@ -8,20 +8,20 @@ class Admin::ContactsController < ApplicationController
   # GET /contacts.json
   def index
     session[:search_params] = params[:contact] ? params[:contact] : nil
-    
+
     session[:set_pager_number] = params[:set_pager_number] if params[:set_pager_number]
-    
+
     if session[:set_pager_number].nil?
       session[:set_pager_number] = PER_PAGE
-    end  
-    
+    end
+
     @o_all = Contact.
                   search(session[:search_params]).
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
-                  
+
     @params_arr = ['name', 'email']
-    
+
     @o_single = controller_name.classify.constantize.new
   end
 
@@ -46,7 +46,7 @@ class Admin::ContactsController < ApplicationController
     @o_single = Contact.new(contact_params)
     respond_to do |format|
       if @o_single.save
-        format.html { redirect_to contacts_url, notice: t("general.successfully_created") }
+        format.html { redirect_to admin_contacts_url, notice: t("general.successfully_created") }
         format.json { head :no_content }
       else
         format.html { render action: 'new' }
@@ -60,7 +60,7 @@ class Admin::ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @o_single.update(contact_params)
-        format.html { redirect_to contacts_url, notice: t("general.successfully_updated") }
+        format.html { redirect_to admin_contacts_url, notice: t("general.successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,7 +74,7 @@ class Admin::ContactsController < ApplicationController
   def destroy
     @o_single.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: t("general.successfully_destroyed") }
+      format.html { redirect_to admin_contacts_url, notice: t("general.successfully_destroyed") }
       format.json { head :no_content }
     end
   end
@@ -90,7 +90,7 @@ class Admin::ContactsController < ApplicationController
         id_arrs = params[:rec].collect { |k, v| k }
         Contact.find(id_arrs).map(&:destroy)
         flash[:notice] = t("general.successfully_destroyed")
-      end    
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -101,13 +101,13 @@ class Admin::ContactsController < ApplicationController
     def set_header_menu_active
       @contacts = "active"
     end
-    
+
     def sort_column
       Contact.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
-  
+
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
-        
+
 end
