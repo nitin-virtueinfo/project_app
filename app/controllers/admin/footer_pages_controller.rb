@@ -20,7 +20,7 @@ class Admin::FooterPagesController < ApplicationController
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
 
-    @params_arr = ['name']
+    @params_arr = { :name => { "type" => 'text' } }
 
     @o_single = controller_name.classify.constantize.new
   end

@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
                   order(sort_column + " " + sort_direction).
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
 
-    @params_arr = ['first_name', 'email']
+    @params_arr = { :first_name => { "type" => 'text' }, :email => { "type" => 'text' } }
 
     @o_single = controller_name.classify.constantize.new
   end

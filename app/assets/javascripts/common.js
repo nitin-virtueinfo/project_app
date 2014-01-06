@@ -25,7 +25,14 @@ $(document).ready(function() {
 	  	return false;
 	  }
 	});
+
+  $('#search_button').click(function(){
+    $('.form-horizontal').trigger("reset");
+    $('#search_form').show();
+  });
+
 });
 $(function() {
   $('.pagination a').attr('data-remote', 'true')
 });
+

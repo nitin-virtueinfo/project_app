@@ -21,6 +21,7 @@ class Admin::SettingsController < ApplicationController
                   paginate(:per_page => session[:set_pager_number], :page => params[:page])
 
     @params_arr = ['default_name']
+    @params_arr = { :default_name => { "type" => 'text' } }
 
     @o_single = controller_name.classify.constantize.new
   end
